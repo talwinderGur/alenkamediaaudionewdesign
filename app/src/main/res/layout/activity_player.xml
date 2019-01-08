@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#d3d3d3">
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        tools:context="com.alenkaaudioplayer.LoginActivity">
+
+
+        <com.devbrackets.android.exomedia.ui.widget.VideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:useDefaultControls="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:visibility="invisible"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/layer3"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/playerToolbar"
+                    layout="@layout/player_bar"> </include>
+
+                <include
+                    android:id="@+id/playericon"
+                    layout="@layout/playericon"> </include>
+
+                <include
+                    android:id="@+id/playercontrol"
+                    layout="@layout/playercontrols"> </include>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/layer4">
+
+                    <android.support.v7.widget.SearchView
+                        android:id="@+id/search"
+                        android:layout_width="200dp"
+                        android:layout_marginLeft="90dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true" />
+
+
+                    <ImageButton
+                        android:id="@+id/helpimg"
+                        android:layout_width="31dp"
+                        android:layout_height="30dp"
+                        android:paddingTop="8dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:background="#FFFFFF"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/qmark" />
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:id="@+id/tool"
+                    android:background="#286CA6"
+                    local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    local:theme="@style/MyHomeActivityTheme">
+
+                    <TextView
+                        android:id="@+id/playlistbtn"
+                        android:layout_width="80dp"
+                        android:paddingTop="2dp"
+                        android:layout_height="30dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"
+                        android:text="Playlist"
+                        android:textColor="@color/white"
+                        />
+
+                </android.support.v7.widget.Toolbar>
+
+                <LinearLayout
+                    android:id="@+id/layoutProgress"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:background="#ededed"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:id="@+id/pbProcessing"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="4dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.8"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/custom_pb" />
+
+                    <TextView
+                        android:id="@+id/txtProgressPercent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:text="100 %"
+                        android:textColor="@color/player_background"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listViewPlaylists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:divider="#d3d3d3"
+                    android:background="#ededed"
+                    android:dividerHeight="@dimen/listview_dividerHeight"
+                    android:layout_marginBottom="25dp"
+                    android:visibility="gone"/>
+
+                <ListView
+                    android:id="@+id/listViewSongs"
+                    android:layout_width="match_parent"
+                    android:layout_height="265dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/layer3"
+                    android:divider="#d3d3d3"
+                    android:dividerHeight="@dimen/listview_dividerHeight" />
+
+                <ListView
+                    android:id="@+id/listViewSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/layer3"
+                    android:divider="#d3d3d3"
+                    android:dividerHeight="@dimen/listview_dividerHeight"
+                    android:visibility="gone"/>
+
+
+                <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:id="@+id/simpleExoPlayer"
+                    android:background="#d3d3d3"
+                    android:visibility="invisible">
+                </com.google.android.exoplayer2.ui.SimpleExoPlayerView>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/layer3">
+
+            <TextView
+                android:id="@+id/download"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:text="Songs Downloaded"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+    <fragment
+        android:id="@+id/fragment_navigation_drawer"
+        android:name="com.alenkasmartaudioplayer.drawer.FragmentDrawer"
+        android:layout_width="290dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_nav_drawer"
+        tools:layout="@layout/fragment_nav_drawer"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutNoPlaylist"
+        android:background="@color/player_background"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgID"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/store_forward"
+            android:padding="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

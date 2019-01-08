@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/player_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/player_background">
+
+
+            />
+
+        <ImageButton
+            android:id="@+id/playPause"
+            android:layout_width="49dp"
+            android:layout_height="120dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:background="#778899"
+            android:scaleType="fitXY"
+            android:src="@drawable/play_pause" />
+
+        <ImageView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_20_dp"
+            android:layout_gravity="center"
+            android:src="@drawable/volume_selector"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:visibility="gone"/>
+        <ImageButton
+            android:id="@+id/stop"
+            android:layout_width="38dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@id/playPause"
+            android:background="#778899"
+            android:scaleType="fitXY"
+            android:src="@drawable/pause" />
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="38dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/playPause"
+            android:background="#778899"
+            android:scaleType="fitXY"
+            android:src="@drawable/next" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

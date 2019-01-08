@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="330dp"
+    android:id="@+id/linear"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center"
+    >
+
+    <ImageButton
+        android:id="@+id/btnCancel1"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
+        android:layout_gravity="end"
+        android:background="@drawable/layer3"
+        android:scaleType="fitXY"
+        android:src="@drawable/cross"/>
+
+    <ListView
+            android:id="@+id/listViewCustomDialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/layer3"
+            android:divider="#d3d3d3"
+            android:dividerHeight="@dimen/listview_dividerHeight" />
+
+
+</LinearLayout>
