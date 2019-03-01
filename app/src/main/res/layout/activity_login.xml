@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
+    android:background="@drawable/layer3"
     tools:context="com.alenkasmartaudioplayer.activities.LoginActivity"
     android:orientation="vertical"
     android:padding="10dp"
@@ -19,9 +19,10 @@
 
         <ImageView
             android:layout_marginBottom="@dimen/login_icon_margin_bottom"
+            android:paddingTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/playerlogo"
+            android:src="@drawable/logo"
             android:id="@+id/imageLogin"
             />
 

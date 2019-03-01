@@ -346,7 +346,7 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
 
         btnNextsong = (ImageButton) findViewById(R.id.next);
         btnPlayPause = (ImageButton) findViewById(R.id.playPause);
-         btnImghelp= (ImageButton) findViewById(R.id.helpimg);
+        btnImghelp= (ImageButton) findViewById(R.id.helpimg);
         searchview = (SearchView) findViewById(R.id.search);
         searchview.setQueryHint("Enter search");
         btnStop = (ImageButton) findViewById(R.id.stop);
@@ -538,7 +538,15 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
                     int totalSongs = new PlaylistManager(HomeActivity.this,null).getTotalDownloadedSongs();
                     int countSongs=new PlaylistManager(HomeActivity.this,null).getTotalSongs();
                     if (totalSongs >= 0) {
-                        txtDownload.setText("Songs Download"+totalSongs+"/"+countSongs);
+                        txtDownload.setText("Songs Downloaded:"+totalSongs+"/"+countSongs);
+                    }
+                    if(arrSongs.size()-1>currentlyPlayingSongAtIndex) {
+                        NextxtSongTitle.setText(arrSongs.get(currentlyPlayingSongAtIndex + 1).getTitle());
+                        NexttxtSongArtist.setText(arrSongs.get(currentlyPlayingSongAtIndex + 1).getAr_Name());
+                    }
+                    else{
+                        NextxtSongTitle.setText(arrSongs.get(0).getTitle());
+                        NexttxtSongArtist.setText(arrSongs.get(0).getAr_Name());
                     }
                     txtDownload.setVisibility(View.GONE);
                 }
@@ -1187,8 +1195,8 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
                     NexttxtSongArtist.setText(arrSongs.get(currentlyPlayingSongAtIndex + 1).getAr_Name());
                 }
                 else{
-                    NextxtSongTitle.setText("End of Playlist");
-                    NexttxtSongArtist.setText("");
+                    NextxtSongTitle.setText(arrSongs.get(0).getTitle());
+                    NexttxtSongArtist.setText(arrSongs.get(0).getAr_Name());
                 }
                 setVideoPath(arrSongs.get(currentlyPlayingSongAtIndex).getSongPath());
 
@@ -1243,6 +1251,7 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
             TrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
             LoadControl loadControl = new DefaultLoadControl();
             SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl);
+
             simpleExoPlayer.setPlayer(player);
             DataSource.Factory dataSourceFactory = new EncryptedFileDataSourceFactory(decipher, secretKeySpec, null, bandwidthMeter);
             ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
@@ -2428,9 +2437,7 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
                         alarm.pausePlaylistWatcher();
                     }
                 } else {
-
                     videoView.start();
-
 
                     if (fadingMediaPlayer != null && !fadingMediaPlayer.isFadingMediaPlaying()){
                         fadingMediaPlayer.resume();
@@ -2468,7 +2475,16 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
 
 
             case R.id.stop:{
-                finish();
+                videoView.release();
+                videoView.stopPlayback();
+                lvSongs.setVisibility(View.GONE);
+                txtSongTitle.setVisibility(View.GONE);
+                txtSongArtist.setVisibility(View.GONE);
+                NextxtSongTitle.setVisibility(View.GONE);
+                NexttxtSongArtist.setVisibility(View.GONE);
+                txtCurrentDuration.setText("00:00");
+                txtTotalDuration.setText("00:00");
+                btnPlayPause.setEnabled(false);
 
             }break;
 
@@ -2602,8 +2618,8 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
                     NexttxtSongArtist.setText(arrSongs.get(currentlyPlayingSongAtIndex + 1).getAr_Name());
                 }
                 else{
-                    NextxtSongTitle.setText("End of Playlist");
-                    NexttxtSongArtist.setText("");
+                    NextxtSongTitle.setText(arrSongs.get(0).getTitle());
+                    NexttxtSongArtist.setText(arrSongs.get(0).getAr_Name());
                 }
                 setVideoPath(arrSongs.get(currentlyPlayingSongAtIndex).getSongPath());
 
@@ -2867,7 +2883,7 @@ public class HomeActivity extends AppCompatActivity implements DownloadListener,
 
         TextView txtidhelp  = (TextView) pickerDialog.findViewById(R.id.helptext);
 
-        txtidhelp.setText("Your player id is "+SharedPreferenceUtil.getStringPreference(HomeActivity.this, Constants.TOKEN_ID));
+        txtidhelp.setText("The player id is "+SharedPreferenceUtil.getStringPreference(HomeActivity.this, Constants.TOKEN_ID));
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override

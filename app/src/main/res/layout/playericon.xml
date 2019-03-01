@@ -19,7 +19,7 @@
             android:paddingTop="2dp"
         android:id="@id/text"
         android:text="Next song to be played"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textColor="#FFFFFF"/>
 
         <TextView
@@ -30,7 +30,7 @@
             android:text="Artist"
             android:layout_below="@id/text"
             android:textColor="#FFFFFF"
-            android:textSize="13dp" />
+            android:textSize="15dp" />
 
     </RelativeLayout>
 

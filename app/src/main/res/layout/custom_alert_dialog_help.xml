@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180dp"
-    android:layout_height="100dp"
+    android:layout_width="220dp"
+    android:layout_height="120dp"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:layout_gravity="center"
@@ -20,6 +20,19 @@
             android:textSize="15dp"
             android:textColor="@color/white"
             android:layout_marginTop="30dp" />
+
+        <TextView
+            android:id="@+id/helptext1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_below="@id/helptext"
+            android:text="For assistance,please contact support@alenkamedia.com"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp" />
+
+
 
         <ImageView
             android:id="@+id/helpCancel"
